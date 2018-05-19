@@ -232,11 +232,14 @@ RUN \
   tar -xzvf "ionic-angular-official-super.tar.gz" && \
   rm "ionic-angular-official-super.tar.gz"
 RUN \
+  cd /app/ && \
   ls -l && \
   npm install 
 RUN \
+  cd /app/ && \
   ionic cordova platform add android --no-resources
 RUN \
+  cd /app/ && \
   ionic cordova build android
 
 

@@ -226,13 +226,13 @@ cat /image.config
   #ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
   #write y
 RUN \
-  cd / && \
+  cd /app/ && \
   curl -SLO "https://d2ql0qc7j8u4b2.cloudfront.net/ionic-angular-official-super.tar.gz" && \
   tar -xzvf "ionic-angular-official-super.tar.gz" && \
   rm "ionic-angular-official-super.tar.gz"
 RUN 
 RUN \
-  cd /ionic-angular-official-super && \
+  cd /app/ionic-angular-official-super && \
   npm install 
 RUN \
   ionic cordova platform add android --no-resources

@@ -15,7 +15,7 @@ RUN \
   apt-get update -qqy && \
   apt-get install -qqy --allow-unauthenticated \
           apt-transport-https \
-          python-software-properties \
+          #python-software-properties \
           software-properties-common \
           curl \
           expect \ 

@@ -223,7 +223,8 @@ cat /image.config
 RUN \
   cd / && \
   #ionic config set -g backend legacy && \
-  ionic start app blank --type ionic-angular --no-deps --no-link --no-git
+  ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
+  write y
 RUN \
   cd /app && \
   npm install 

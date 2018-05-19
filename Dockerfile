@@ -98,27 +98,17 @@ ENV NPM_CONFIG_LOGLEVEL info
 
 # gpg keys listed at https://github.com/nodejs/node
 RUN \
-  set -ex \
-  && for key in \
-    213599127d24496cbf1cbb2a7c51060a3506d6b11132c59bb7f9f8a0edd210a7 \
-    67dc4c06a58d4b23c5378325ad7e0a2ec482b48cea802252b99ebe8538a3ab79 \
-  ; do \
-  gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "${key}"; \
-  done && \ 
   curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" && \
-  curl -SLO "https://nodejs.org/dist/v${NODE_VERSION}/SHASUMS256.txt.asc" && \
-  gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc && \
-  grep " node-v${NODE_VERSION}-linux-x64.tar.xz\$" SHASUMS256.txt | sha256sum -c - && \
   tar -xJf "node-v${NODE_VERSION}-linux-x64.tar.xz" -C /usr/local --strip-components=1 && \
-  rm "node-v${NODE_VERSION}-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt && \
+  rm "node-v${NODE_VERSION}-linux-x64.tar.xz" && \
   ln -s /usr/local/bin/node /usr/local/bin/nodejs && \
-  chmod 777 /usr/local/lib/node_modules -R && \
-  npm install -g npm@${NPM_VERSION} && \
-  if [ "${PACKAGE_MANAGER}" = "yarn" ]; then \
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get update -qqy && apt-get install -qqy --allow-unauthenticated yarn; \
-  fi
+  chmod 777 /usr/local/lib/node_modules -R
+  #npm install -g npm@${NPM_VERSION} && \
+  #if [ "${PACKAGE_MANAGER}" = "yarn" ]; then \
+  #  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+  #  echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+  #  apt-get update -qqy && apt-get install -qqy --allow-unauthenticated yarn; \
+  #fi
 
 
 # -----------------------------------------------------------------------------

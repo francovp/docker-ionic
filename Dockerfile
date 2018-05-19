@@ -1,6 +1,6 @@
 
-FROM ubuntu:16.04
-MAINTAINER Juergen Schackmann
+FROM ubuntu:18.04
+MAINTAINER Juan Darien Macías Hernández <darienmh@gmail.com>
 
 # -----------------------------------------------------------------------------
 # General environment variables
@@ -86,10 +86,10 @@ RUN \
 # Install Node, NPM, yarn
 # -----------------------------------------------------------------------------
 ARG NODE_VERSION
-ENV NODE_VERSION ${NODE_VERSION:-6.9.5} 
+ENV NODE_VERSION ${NODE_VERSION:-8.10.0} 
 
 ARG NPM_VERSION
-ENV NPM_VERSION ${NPM_VERSION:-5.3.0}
+ENV NPM_VERSION ${NPM_VERSION:-5.6.0}
 
 ARG PACKAGE_MANAGER
 ENV PACKAGE_MANAGER ${PACKAGE_MANAGER:-npm}
@@ -184,10 +184,10 @@ USER ${USER}
 # -----------------------------------------------------------------------------
 
 ARG CORDOVA_VERSION
-ENV CORDOVA_VERSION ${CORDOVA_VERSION:-7.0.1}
+ENV CORDOVA_VERSION ${CORDOVA_VERSION:-8.0.0}
 
 ARG IONIC_VERSION
-ENV IONIC_VERSION ${IONIC_VERSION:-3.12.0}
+ENV IONIC_VERSION ${IONIC_VERSION:-3.20.0}
 
 ARG TYPESCRIPT_VERSION
 ENV TYPESCRIPT_VERSION ${TYPESCRIPT_VERSION:-2.3.4}
@@ -238,7 +238,7 @@ cat /image.config
 # -----------------------------------------------------------------------------
 RUN \
   cd / && \
-  ionic config set -g backend legacy && \
+  #ionic config set -g backend legacy && \
   ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
   cd /app && \
   ${PACKAGE_MANAGER} install && \

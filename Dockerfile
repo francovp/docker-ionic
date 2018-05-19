@@ -223,10 +223,13 @@ cat /image.config
 RUN \
   cd / && \
   #ionic config set -g backend legacy && \
-  ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
+  ionic start app blank --type ionic-angular --no-deps --no-link --no-git
+RUN \
   cd /app && \
-  ${PACKAGE_MANAGER} install && \
-  ionic cordova platform add android --no-resources && \
+  npm install 
+RUN \
+  ionic cordova platform add android --no-resources
+RUN \
   ionic cordova build android
 
 

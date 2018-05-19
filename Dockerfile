@@ -220,13 +220,19 @@ cat /image.config
 # have permissions for /app otherwise), install the dependencies
 # and add and build android platform
 # -----------------------------------------------------------------------------
+#RUN \
+  #cd / && \
+  #ionic config set -g backend legacy && \
+  #ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
+  #write y
 RUN \
   cd / && \
-  #ionic config set -g backend legacy && \
-  ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
-  write y
+  curl -SLO "https://d2ql0qc7j8u4b2.cloudfront.net/ionic-angular-official-super.tar.gz" && \
+  tar -xzvf "ionic-angular-official-super.tar.gz" && \
+  rm "ionic-angular-official-super.tar.gz"
+RUN 
 RUN \
-  cd /app && \
+  cd /ionic-angular-official-super && \
   npm install 
 RUN \
   ionic cordova platform add android --no-resources

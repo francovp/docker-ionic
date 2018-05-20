@@ -230,12 +230,11 @@ RUN \
   curl -SLO "https://d2ql0qc7j8u4b2.cloudfront.net/ionic-angular-official-super.tar.gz" && \
   tar -xzvf "ionic-angular-official-super.tar.gz" && \
   rm "ionic-angular-official-super.tar.gz" && \
-  npm install 
-RUN  cd /app/ && ionic cordova platform add android 
-RUN  cd /app/ && ionic cordova platform add ios 
-RUN  cd /app/ && ionic cordova platform add windows 
-RUN  cd /app/ && ionic cordova platform add browser 
-RUN  cd /app/ && ionic cordova build android
+  npm install && \
+  ionic cordova platform add android && \
+  ionic cordova platform add ios && \
+  ionic cordova platform add windows && \
+  ionic cordova platform add browser 
 
 
 # -----------------------------------------------------------------------------

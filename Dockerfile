@@ -1,4 +1,3 @@
-
 FROM ubuntu:18.04
 MAINTAINER Juan Darien Macías Hernández <darienmh@gmail.com>
 
@@ -225,15 +224,18 @@ cat /image.config
   #ionic config set -g backend legacy && \
   #ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
   #write y
-USER root
+
 RUN \
   cd /app/ && \
   curl -SLO "https://d2ql0qc7j8u4b2.cloudfront.net/ionic-angular-official-super.tar.gz" && \
   tar -xzvf "ionic-angular-official-super.tar.gz" && \
   rm "ionic-angular-official-super.tar.gz" && \
-  npm install && \
-  ionic cordova platform add android --no-resources && \
-  ionic cordova build android
+  npm install 
+RUN  ionic cordova platform add android 
+RUN  ionic cordova platform add ios 
+RUN  ionic cordova platform add windows 
+RUN  ionic cordova platform add browser 
+RUN  ionic cordova build android
 
 
 # -----------------------------------------------------------------------------
@@ -256,7 +258,7 @@ WORKDIR /app
 # -----------------------------------------------------------------------------
 ENTRYPOINT ["/start.sh"]
 
-USER root
+
 # -----------------------------------------------------------------------------
 # After /start.sh the bash is called.
 # -----------------------------------------------------------------------------

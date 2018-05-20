@@ -225,7 +225,7 @@ cat /image.config
   #ionic config set -g backend legacy && \
   #ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
   #write y
-
+USER root
 RUN \
   cd /app/ && \
   curl -SLO "https://d2ql0qc7j8u4b2.cloudfront.net/ionic-angular-official-super.tar.gz" && \

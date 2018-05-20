@@ -231,11 +231,11 @@ RUN \
   tar -xzvf "ionic-angular-official-super.tar.gz" && \
   rm "ionic-angular-official-super.tar.gz" && \
   npm install 
-RUN  ionic cordova platform add android 
-RUN  ionic cordova platform add ios 
-RUN  ionic cordova platform add windows 
-RUN  ionic cordova platform add browser 
-RUN  ionic cordova build android
+RUN  cd /app/ && ionic cordova platform add android 
+RUN  cd /app/ && ionic cordova platform add ios 
+RUN  cd /app/ && ionic cordova platform add windows 
+RUN  cd /app/ && ionic cordova platform add browser 
+RUN  cd /app/ && ionic cordova build android
 
 
 # -----------------------------------------------------------------------------

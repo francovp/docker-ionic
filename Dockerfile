@@ -6,6 +6,10 @@ MAINTAINER Juan Darien Macías Hernández <darienmh@gmail.com>
 # -----------------------------------------------------------------------------
 ENV DEBIAN_FRONTEND=noninteractive
 
+ARG CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL
+ENV CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL ${CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL:-https://downloads.gradle.org/distributions/gradle-4.1-all.zip}
+RUN echo ${CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL}
+
 
 # -----------------------------------------------------------------------------
 # Install system basics

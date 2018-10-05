@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-MAINTAINER Juergen Schackmann
+MAINTAINER Franco Valerio Pasqualetti <franco.valerio.p@outlook.com>
 
 # -----------------------------------------------------------------------------
 # General environment variables
